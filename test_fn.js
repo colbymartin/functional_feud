@@ -46,6 +46,22 @@ test('all', function (t) {
     t.deepEqual(functions.all([], testfunc1), true);
 });
 
+test('some', function (t) {
+    let testfunc1 = function divisbyThree(num) {return num % 3 === 0};
+    t.deepEqual(functions.some([15, 18], testfunc1), true);
+    t.deepEqual(functions.some([3, 6, 9, 300], testfunc1), true);
+    t.deepEqual(functions.some([2, 6, 9, 300], testfunc1), true);
+    t.deepEqual(functions.some([2, 4, 300], testfunc1), true);
+    t.deepEqual(functions.some([2, 4, 8], testfunc1), false);
+    t.deepEqual(functions.some([], testfunc1), false);
+});
+
+test('find', function (t) {
+    let testfunc1 = function startwithS(name) {return (name[0] === 's' || name[0] === 'S')};
+    let testfunc2 = function containsAsterisk(string) {for (let i = 0; i < string.length; i++) {if (string[i] === '*') { return true }}};
+    t.deepEqual(functions.find(['Peg', 'Terry', 'Sam', 'Ronnie', 'Sally'], testfunc1), 'Sam');
+    t.deepEqual(functions.find(['Peg', 'James', 'Bi*ll', 'Ed'], testfunc2), 'Bi*ll');
+});
 
 
 

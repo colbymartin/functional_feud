@@ -5,6 +5,8 @@ module.exports = {
     filter: filter,
     reduce: reduce,
     all: all,
+    some: some,
+    find: find, 
 };
 
 
@@ -109,3 +111,41 @@ function all(allarray, allfunction) {
     return answer;
 } 
 
+
+/////////////////// 6. Some ///////////////////
+
+// some(array, func) returns true if calling func with each element of array returns true in at least one case
+// inputs: array and a function
+// outputs: boolean (true or false)
+// 1. assign boolean to false
+// 2. loop through array, running each value into function 
+// 3. If, at any point a function passes, return true for the function
+
+function some(somearray, somefunction) {
+    let some = false;
+    for (let i = 0; i < somearray.length; i++) {
+        if (somefunction(somearray[i])) {
+            return true;
+        }
+    }
+    return some;
+}
+
+
+/////////////////// 7. Find ///////////////////
+
+// find(array, func) returns the first element where calling func with the element returns true
+// inputs: array and a function 
+// outputs: a single string or number
+// 1. run loop through array
+// 2. pass each value through function. Once one passes, return that value. 
+// 3. If none pass, return false
+
+function find(findarray, findfunction) {
+    for (let i = 0; i < findarray.length; i++) {
+        if (findfunction(findarray[i])) {
+            return findarray[i];
+        }
+    }
+    return false;
+}

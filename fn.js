@@ -86,7 +86,7 @@ function filter(filterarray, filterfunction) {
 function reduce(reducearray, reducefunction, startvalue) {
     let value = startvalue;
     for (let i = 0; i < reducearray.length; i++) {
-        value = reducefunction(reducearray[i], value);
+        value = reducefunction(value, reducearray[i]);
     }
     return value;
 };
